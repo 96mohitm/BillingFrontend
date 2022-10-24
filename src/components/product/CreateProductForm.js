@@ -13,7 +13,7 @@ const CreateProductForm = () => {
     const requestData = {
       "name": productName,
       "description": productDescription,
-      "unit": "Pieces", // TODO: make it dropdown.
+      "unit": productUnit,
     };
 
     const createProductPath = 'product';
@@ -44,7 +44,7 @@ const CreateProductForm = () => {
         <div class="mb-3">
           {/* TODO: use this to send the data in api call. */}
           <label for="productUnit" class="form-label">Unit</label>
-          <select class="form-select" aria-label="Default select example" value={productUnit} onChange={(selectedOption) => {console.log(selectedOption)}}>
+          <select class="form-select" aria-label="Default select example" value={productUnit} onChange={(event) => setProductUnit(event.target.value)}>
             <option value="open this select" selected>Open this select menu</option>
             <option value="Pices">Pices</option>
             <option value="Weight">Weight</option>
