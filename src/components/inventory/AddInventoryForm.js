@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { localhostURL } from '../../constants';
 import { useDispatch } from 'react-redux';
-import { getInventoryList } from './action';
+import { getInventoryList } from './actions';
 
 
 const AddInventoryForm = ({

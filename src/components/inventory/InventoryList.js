@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectInventory } from './reducer';
-import { getInventoryList } from './action';
+import { getInventoryList } from './actions';
 
 
 const InventoryList = () => {

@@ -5,6 +5,11 @@ const Sidebar = () => {
   return (
     <Nav vertical>
       <NavItem>
+        <NavLink href="/billing">
+          Billing
+        </NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink href="/inventory">
           Inventory
         </NavLink>

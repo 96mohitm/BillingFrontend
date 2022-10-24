@@ -1,4 +1,4 @@
-import { GET_INVENTORY } from './action';
+import { GET_INVENTORY } from './actions';
 
 const initialState = {
   inventoryList: [],
@@ -6,7 +6,6 @@ const initialState = {
 
 export const getInventoryReducer = (state=initialState, action) => {
   if (action.type === GET_INVENTORY) {
-    console.log("action", action);
     return {
       ...state,
       inventoryList: action.payload,
