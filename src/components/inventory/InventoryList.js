@@ -1,22 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { localhostURL } from '../../constants';
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { selectInventory } from './reducer';
+import { getInventoryList } from './action';
+
 
 const InventoryList = () => {
-  const [inventoryList, setInventoryList] = useState([])
-
-  const getInventoryList = () => {
-    const inventoryListPath = 'inventory_list';
-    axios.get(localhostURL + inventoryListPath)
-      .then((res) => {
-        console.log(res.data.inventory);
-        setInventoryList(res.data.inventory);
-      })
-  };
+  const dispatch = useDispatch();
+  const inventoryList = useSelector(selectInventory);
 
   useEffect(() => {
-    getInventoryList();
+    getInventoryList(dispatch);
+  // eslint-disable-next-line
   }, []);
+
+  const refreshHandler = () => {
+    getInventoryList(dispatch);
+  };
 
   const getTableBody = () => {
     return (
@@ -37,9 +36,8 @@ const InventoryList = () => {
 
   return (
     <div>
-        <h2>InventoryList</h2>
-        <button type="button" class="btn btn-primary" onClick={() => getInventoryList()}>Refresh</button>
-        <table class="table">
+        <button type="button" className="btn btn-primary" onClick={() => refreshHandler()}>Refresh</button>
+        <table className="table">
         <thead>
           <tr>
             <th scope="col">Id</th>

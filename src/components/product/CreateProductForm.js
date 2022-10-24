@@ -46,7 +46,7 @@ const CreateProductForm = () => {
           <label for="productUnit" class="form-label">Unit</label>
           <select class="form-select" aria-label="Default select example" value={productUnit} onChange={(event) => setProductUnit(event.target.value)}>
             <option value="open this select" selected>Open this select menu</option>
-            <option value="Pices">Pices</option>
+            <option value="Pices">Piece</option>
             <option value="Weight">Weight</option>
             <option value="Volumn">Volumn</option>
           </select>

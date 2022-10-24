@@ -1,20 +1,27 @@
 import './App.css';
-import AddInventoryForm from './components/inventory/AddInventoryForm';
-import InventoryList from './components/inventory/InventoryList';
-import CreateProductForm from './components/product/CreateProductForm';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { connect } from "react-redux";
+import MainLayout from './components/layout/MainLayout';
+import InventoryPage from './pages/InventoryPage';
 import ProductList from './components/product/ProductList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <CreateProductForm/>
-        <ProductList />
-        <AddInventoryForm />
-        <InventoryList />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <MainLayout>
+          <Routes>
+            <Route path="/inventory" element={<InventoryPage />} />
+            <Route path="/products" element={<ProductList />} />
+          </Routes>
+        </MainLayout>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default connect()(App);

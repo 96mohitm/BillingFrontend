@@ -1,12 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { localhostURL } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { getInventoryList } from './action';
 
-const AddInventoryForm = () => {
+
+const AddInventoryForm = ({
+  modalToggle
+}) => {
   const [productId, setProductId] = useState("");
   const [batchId, setBatchId] = useState("");
   const [quantity, setQuantity] = useState(0);
-  const [pricePerQuantity, setPricePerQuantity] = useState(0.0)
+  const [pricePerQuantity, setPricePerQuantity] = useState(0.0);
+
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -24,13 +31,17 @@ const AddInventoryForm = () => {
       .catch((err) => {
         console.log(err);
       })
+      .finally(() => {
+        modalToggle();
+        getInventoryList(dispatch);
+      })
   };
 
   return (
     <div>
         <h2>Add Inventory</h2>
         <form onSubmit={submitHandler}>
-        <div class="mb-3">
+        <div className="mb-3">
           <label for="productId" class="form-label">Product Id</label>
           <input type="text" class="form-control" aria-describedby="emailHelp" 
             value={productId} onChange={(e) => {setProductId(e.target.value)}} />
