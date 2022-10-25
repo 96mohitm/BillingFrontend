@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import { useDispatch } from 'react-redux';
 import { localhostURL } from '../../constants';
+import { getProductList } from './actions';
 
-const CreateProductForm = () => {
+const CreateProductForm = ({
+  modalToggle,
+}) => {
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productUnit, setProductUnit] = useState("");
 
+  const dispatch = useDispatch();
+  
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -24,6 +30,11 @@ const CreateProductForm = () => {
       .catch((err) => {
         console.log(err);
       })
+      .finally(() => {
+        modalToggle();
+        getProductList(dispatch);
+      })
+
   };
 
 

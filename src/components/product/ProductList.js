@@ -1,22 +1,20 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { localhostURL } from "../../constants";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductList } from "./actions";
+import { selectProduct } from "./reducer";
 
 const ProductList = () => {
-  const [productList, setproductList] = useState([])
+  const dispatch = useDispatch();
+  const productList = useSelector(selectProduct);
 
-  const getProductList = () => {
-    const productListPath = 'product_list';
-    axios.get(localhostURL + productListPath)
-      .then((res) => {
-        console.log(res.data.products);
-        setproductList(res.data.products);
-      })
-  };
-  
   useEffect(() => {
-    getProductList();
+    getProductList(dispatch);
+  // eslint-disable-next-line
   }, []);
+
+  const refreshHandler = () => {
+    getProductList(dispatch);
+  };
 
   const getTableBody = () => {
     return (
@@ -37,7 +35,7 @@ const ProductList = () => {
   return (
     <div>
         <h2>Product List</h2>
-        <button type="button" class="btn btn-primary" onClick={() => getProductList()}>Refresh</button>
+        <button type="button" class="btn btn-primary" onClick={() => refreshHandler()}>Refresh</button>
         <table class="table">
         <thead>
           <tr>

@@ -3,6 +3,7 @@ import { getInventoryReducer } from '../components/inventory/reducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'
 import { billingReducer } from '../components/billing/reducer';
+import { productReducer } from '../components/product/reducer';
 
 
 const preloadedState = {
@@ -12,12 +13,16 @@ const preloadedState = {
   billing: {
     billingList: [],
   },
+  product: {
+    productList: [],
+  }
 };
 
 export const store = configureStore({
   reducer: {
     inventory: getInventoryReducer,
     billing: billingReducer,
+    product: productReducer,
   },
   middleware: [thunk, logger], //composeWithDevTools(applyMiddleware(...middleware)),
   preloadedState,

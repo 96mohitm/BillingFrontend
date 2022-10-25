@@ -6,9 +6,15 @@ const Sidebar = () => {
     <Nav vertical>
       <NavItem>
         <NavLink href="/billing">
-          Billing
+          Sales
         </NavLink>
       </NavItem>
+      {/* TODO: add purchase page. */}
+      {/* <NavItem>
+        <NavLink href="/purchase">
+          Purchase
+        </NavLink>
+      </NavItem> */}
       <NavItem>
         <NavLink href="/inventory">
           Inventory

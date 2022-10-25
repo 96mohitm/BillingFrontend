@@ -17,7 +17,7 @@ const InventoryPage = props => {
       <InventoryList />
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <AddInventoryForm modalToggle={toggle}/>
+        <AddInventoryForm modalToggle={toggle} />
       </Modal>
     </div>
   )
